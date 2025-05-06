@@ -1,7 +1,16 @@
-﻿namespace EMS.Infrastructure
+﻿using Microsoft.Extensions.DependencyInjection;
+
+namespace EMS.Infrastructure
 {
-    public class DependencyInjection
+    public static class DependencyInjection
     {
+        public static IServiceCollection AddInfrastructure(this IServiceCollection services)
+        {
+
+
+            return services;
+
+        }
 
     }
 }
