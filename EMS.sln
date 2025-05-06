@@ -9,6 +9,10 @@ Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "ems.client", "ems.client\em
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EMS.Domain", "EMS.Domain\EMS.Domain.csproj", "{DCBAA4CD-8CA4-4524-BC2A-6B30EBF2F4F9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EMS.Application", "EMS.Application\EMS.Application.csproj", "{6D539388-7393-4B8B-AEBA-B8720AA8D9A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EMS.Infrastructure", "EMS.Infrastructure\EMS.Infrastructure.csproj", "{40343E15-A4C5-4C15-AF64-5CA357A308C6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +33,14 @@ Global
 		{DCBAA4CD-8CA4-4524-BC2A-6B30EBF2F4F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCBAA4CD-8CA4-4524-BC2A-6B30EBF2F4F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DCBAA4CD-8CA4-4524-BC2A-6B30EBF2F4F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D539388-7393-4B8B-AEBA-B8720AA8D9A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D539388-7393-4B8B-AEBA-B8720AA8D9A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D539388-7393-4B8B-AEBA-B8720AA8D9A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D539388-7393-4B8B-AEBA-B8720AA8D9A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40343E15-A4C5-4C15-AF64-5CA357A308C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40343E15-A4C5-4C15-AF64-5CA357A308C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40343E15-A4C5-4C15-AF64-5CA357A308C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40343E15-A4C5-4C15-AF64-5CA357A308C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
