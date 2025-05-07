@@ -14,21 +14,21 @@ namespace EMS.Infrastructure.Seeder
             if (!await context.Categories.AnyAsync())
             {
                 context.Categories.AddRange(
-                    new Category { Id = 1, Name = "Music Festival" },
-                    new Category { Id = 2, Name = "Cultural Night" },
-                    new Category { Id = 3, Name = "Theater & Performance" },
-                    new Category { Id = 4, Name = "Literature & Poetry" },
-                    new Category { Id = 5, Name = "Traditional & Heritage" },
-                    new Category { Id = 6, Name = "Historical & Educational" },
-                    new Category { Id = 7, Name = "Technology & Conferences" },
-                    new Category { Id = 8, Name = "Handicrafts & Markets" },
-                    new Category { Id = 9, Name = "Religious Celebrations" },
-                    new Category { Id = 10, Name = "Outdoor & Nature" },
-                    new Category { Id = 11, Name = "Food & Culinary" },
-                    new Category { Id = 12, Name = "Youth & Family" },
-                    new Category { Id = 13, Name = "Cinema & Film" },
-                    new Category { Id = 14, Name = "Workshops & Training" },
-                    new Category { Id = 15, Name = "Art & Exhibitions" }
+                    new Category { Name = "Music Festival" },
+                    new Category { Name = "Cultural Night" },
+                    new Category { Name = "Theater & Performance" },
+                    new Category { Name = "Literature & Poetry" },
+                    new Category { Name = "Traditional & Heritage" },
+                    new Category { Name = "Historical & Educational" },
+                    new Category { Name = "Technology & Conferences" },
+                    new Category { Name = "Handicrafts & Markets" },
+                    new Category { Name = "Religious Celebrations" },
+                    new Category { Name = "Outdoor & Nature" },
+                    new Category { Name = "Food & Culinary" },
+                    new Category { Name = "Youth & Family" },
+                    new Category { Name = "Cinema & Film" },
+                    new Category { Name = "Workshops & Training" },
+                    new Category { Name = "Art & Exhibitions" }
                     );
 
                 await context.SaveChangesAsync();

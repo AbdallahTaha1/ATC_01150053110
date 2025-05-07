@@ -13,6 +13,7 @@ namespace EMS.Infrastructure.Seeder
             if (!await roleManager.Roles.AnyAsync())
             {
                 await roleManager.CreateAsync(new IdentityRole() { Name = "Admin" });
+                await roleManager.CreateAsync(new IdentityRole() { Name = "User" });
             }
         }
     }
