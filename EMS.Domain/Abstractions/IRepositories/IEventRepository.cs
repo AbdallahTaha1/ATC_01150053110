@@ -1,6 +1,8 @@
-﻿namespace EMS.Domain.Abstractions.IRepositories
+﻿using EMS.Domain.Entities;
+
+namespace EMS.Domain.Abstractions.IRepositories
 {
-    public interface IEventRepository
+    public interface IEventRepository : IBaseRepository<Event>
     {
     }
 }

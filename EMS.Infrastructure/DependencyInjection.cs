@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using EMS.Domain.Abstractions;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace EMS.Infrastructure
 {
@@ -6,7 +7,7 @@ namespace EMS.Infrastructure
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
-
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
 
             return services;
 

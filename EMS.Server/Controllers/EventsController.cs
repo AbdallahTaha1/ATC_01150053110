@@ -1,0 +1,39 @@
+﻿using EMS.Application.Features.Events.Commands.CreateEvent;
+using EMS.Application.Features.Events.Queries.GetEventById;
+using EMS.Application.Features.Events.Queries.GetEvents;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
+
+namespace EMS.Server.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class EventsController : ControllerBase
+    {
+        private readonly IMediator _mediator;
+
+        public EventsController(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetStudentList(GetEventsQuery request)
+        {
+            var response = await _mediator.Send(request);
+            return Ok(response);
+        }
+
+        [HttpGet("{Id}")]
+        public async Task<IActionResult> GetStudentById([FromRoute] GetEventByIdQuery request)
+        {
+            var response = await _mediator.Send(request);
+            return Ok(response);
+        }
+
+        [HttpPost]
+        public async Task<int> AddEventAsync(CreateEventCommmand command)
+        {
+            return await _mediator.Send(command);
+        }
+    }
+}

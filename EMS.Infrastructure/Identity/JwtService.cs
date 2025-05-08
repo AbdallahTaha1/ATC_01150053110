@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EMS.Application.Features.Events.Queries.Models
+namespace EMS.Infrastructure.Identity
 {
-    internal class GetStudentPaginatedListQuery
+    internal class JwtService
     {
     }
 }
