@@ -15,7 +15,7 @@ namespace EMS.Infrastructure.Seeder
             {
                 var admin = new ApplicationUser()
                 {
-                    UserName = "admin",
+                    UserName = "admin@Evento.com",
                     Email = "admin@Evento.com",
                     FirstName = "Evento",
                     LastName = "Admin",
@@ -28,6 +28,7 @@ namespace EMS.Infrastructure.Seeder
 
                 var user = new ApplicationUser()
                 {
+                    UserName = "Abdallah@Evento.com",
                     Email = "Abdallah@Evento.com",
                     FirstName = "Abdallah",
                     LastName = "Taha",
