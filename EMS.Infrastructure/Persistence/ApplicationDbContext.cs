@@ -12,7 +12,7 @@ namespace EMS.Infrastructure.Persistence
         }
         public DbSet<Event> Events { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<UserBookedEvents> UserBookedEvents { get; set; }
+        public DbSet<UserBookedEvent> UserBookedEvents { get; set; }
 
     }
 }

@@ -145,7 +145,7 @@ namespace EMS.Infrastructure.Migrations
                     b.Property<int>("NumberOfTickets")
                         .HasColumnType("int");
 
-                    b.Property<double>("Pirce")
+                    b.Property<double>("Price")
                         .HasColumnType("float");
 
                     b.Property<string>("Venue")
@@ -160,7 +160,7 @@ namespace EMS.Infrastructure.Migrations
                     b.ToTable("Events");
                 });
 
-            modelBuilder.Entity("EMS.Domain.Entities.UserBookedEvents", b =>
+            modelBuilder.Entity("EMS.Domain.Entities.UserBookedEvent", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -328,7 +328,7 @@ namespace EMS.Infrastructure.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("EMS.Domain.Entities.UserBookedEvents", b =>
+            modelBuilder.Entity("EMS.Domain.Entities.UserBookedEvent", b =>
                 {
                     b.HasOne("EMS.Domain.Entities.ApplicationUser", "User")
                         .WithMany("Events")

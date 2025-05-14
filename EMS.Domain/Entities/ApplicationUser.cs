@@ -9,7 +9,7 @@ namespace EMS.Domain.Entities
         public string FirstName { get; set; } = string.Empty;
         [Required, MaxLength(20)]
         public string LastName { get; set; } = string.Empty;
-        public ICollection<UserBookedEvents> Events { get; set; } = [];
+        public ICollection<UserBookedEvent> Events { get; set; } = [];
 
     }
 }

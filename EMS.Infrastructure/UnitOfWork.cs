@@ -10,12 +10,16 @@ namespace EMS.Infrastructure
         private readonly ApplicationDbContext _context;
 
         public IEventRepository Events { get; private set; }
+        public IUserEventRepository UserEvents { get; private set; }
+        public IUserRepository Users { get; private set; }
 
-        public UnitOfWork(ApplicationDbContext context)
+        public UnitOfWork(ApplicationDbContext context, IUserEventRepository userEvents, IUserRepository users)
         {
             _context = context;
 
             Events = new EventRepository(context);
+            UserEvents = userEvents;
+            Users = users;
         }
 
         public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default) =>

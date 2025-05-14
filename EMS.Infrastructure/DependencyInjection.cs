@@ -1,9 +1,11 @@
 ﻿using EMS.Application.Common.Interfaces;
 using EMS.Domain.Abstractions;
+using EMS.Domain.Abstractions.IRepositories;
 using EMS.Domain.Entities;
 using EMS.Infrastructure.Configurations;
 using EMS.Infrastructure.Identity;
 using EMS.Infrastructure.Persistence;
+using EMS.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -21,6 +23,11 @@ namespace EMS.Infrastructure
 
             var connectionString = configuration.GetConnectionString("DefaultConnection")
                                         ?? throw new KeyNotFoundException("Can't find connection string");
+
+            services.AddHttpContextAccessor();
+            services.AddScoped<ICurrentUserService, CurrentUserService>();
+            services.AddTransient<IUserEventRepository, UserEventRepository>();
+            services.AddTransient<IUserRepository, UserRepository>();
 
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<IAuthService, AuthService>();

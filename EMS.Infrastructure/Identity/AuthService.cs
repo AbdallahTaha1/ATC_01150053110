@@ -60,7 +60,7 @@ namespace EMS.Infrastructure.Identity
         public async Task<AuthResultDto> AuthenticatAsync(string email, string password)
         {
             var authModel = new AuthResultDto();
-            // 1. Find user by email
+
             var user = await _userManager.FindByEmailAsync(email);
             if (user is null)
             {
@@ -68,20 +68,16 @@ namespace EMS.Infrastructure.Identity
                 return authModel;
             }
 
-            // 2. Check Password
             if (!await _userManager.CheckPasswordAsync(user, password))
             {
                 authModel.Message = "Incorrect Password!";
                 return authModel;
             }
 
-            // 3. Create Jwt Token
             var jwtSecurityToken = await _jwtService.CreateJwtToken(user);
 
-            // 4. Get User Role
             var rolesList = await _userManager.GetRolesAsync(user);
 
-            // 6. Return AuthResultDto
             authModel.IsAuthenticated = true;
             authModel.JWTToken = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
             authModel.Email = user.Email!;
@@ -90,8 +86,6 @@ namespace EMS.Infrastructure.Identity
             authModel.Roles = rolesList.ToList();
 
             return authModel;
-
-
         }
     }
 }

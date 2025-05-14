@@ -11,12 +11,12 @@ namespace EMS.Domain.Abstractions.IRepositories
         Task<IEnumerable<T>?> GetAllAsync();
         T? Find(Expression<Func<T, bool>> criteria, string[]? includes = null);
         Task<T?> FindAsync(Expression<Func<T, bool>> criteria, string[]? includes = null);
-        IEnumerable<T>? FindAll(Expression<Func<T, bool>> criteria, string[]? includes = null);
+        List<T> FindAll(Expression<Func<T, bool>> criteria, string[]? includes = null);
         IEnumerable<T>? FindAll(Expression<Func<T, bool>> criteria, int take, int skip);
         IEnumerable<T>? FindAll(Expression<Func<T, bool>> criteria, int? take, int? skip,
             Expression<Func<T, object>>? orderBy = null, string? orderByDirection = OrderBy.Ascending);
 
-        Task<IEnumerable<T>?> FindAllAsync(Expression<Func<T, bool>> criteria, string[]? includes = null);
+        Task<List<T>> FindAllAsync(Expression<Func<T, bool>> criteria, string[]? includes = null);
         Task<IEnumerable<T>?> FindAllAsync(Expression<Func<T, bool>> criteria, int skip, int take);
         Task<IEnumerable<T>> FindAllAsync(Expression<Func<T, bool>> criteria, int? skip, int? take,
             Expression<Func<T, object>>? orderBy = null, string orderByDirection = OrderBy.Ascending);

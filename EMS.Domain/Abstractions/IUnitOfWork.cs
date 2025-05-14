@@ -6,6 +6,9 @@ namespace EMS.Domain.Abstractions
     {
         IEventRepository Events { get; }
 
+        IUserEventRepository UserEvents { get; }
+        IUserRepository Users { get; }
+
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }
 }

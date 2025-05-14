@@ -13,13 +13,13 @@ namespace EMS.Domain.Entities
         public Category Category { get; set; } = default!;
         [Required, MaxLength(50)]
         public string Venue { get; set; } = string.Empty;
-        public double Pirce { get; set; }
+        public double Price { get; set; }
 
         public string? ImageUrl { get; set; } = string.Empty;
         public DateTime Date { get; set; }
         public int NumberOfTickets { get; set; }
 
-        public ICollection<UserBookedEvents> BookedTickets { get; set; } = [];
+        public ICollection<UserBookedEvent> BookedTickets { get; set; } = [];
 
     }
 }

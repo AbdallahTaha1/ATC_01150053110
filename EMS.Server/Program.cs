@@ -1,13 +1,14 @@
 using EMS.Application;
 using EMS.Infrastructure;
 using EMS.Infrastructure.Seeder;
+using EMS.Server.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 {
     builder.Services.AddControllers();
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
-
+    builder.Services.AddSwaggerService();
 
     builder.Services.AddApplicationServices()
                     .AddInfrastructure(builder.Configuration);

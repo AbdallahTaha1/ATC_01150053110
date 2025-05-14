@@ -1,0 +1,36 @@
+<div
+  class="card event-card h-100 shadow-sm border-0 rounded-4 overflow-hidden"
+  (click)="goToDetails($event)"
+>
+  <img
+    src="https://images.unsplash.com/photo-1746950862687-3017c5818710?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyfHx8ZW58MHx8fHx8"
+    class="card-img-top object-fit-cover"
+    alt="{{ event.name }}"
+    style="height: 200px"
+  />
+
+  <div class="card-body position-relative">
+    <div class="d-flex justify-content-between mb-2">
+      <span class="badge bg-info text-dark">{{ event.category.name }}</span>
+      <span class="badge bg-light text-secondary border">{{
+        event.date | date : "mediumDate"
+      }}</span>
+    </div>
+
+    <h5 class="card-title fw-semibold">{{ event.name }}</h5>
+    <p class="card-text text-muted small">
+      {{ event.description | slice : 0 : 100 }}...
+    </p>
+
+    <div class="d-flex justify-content-between mt-3">
+      <span class="text-muted small">
+        📍 {{ event.venue }} <br />
+        💵 ${{ event.pirce }}
+      </span>
+
+      <button class="btn btn-primary btn-sm" (click)="bookNow($event)">
+        Book Now
+      </button>
+    </div>
+  </div>
+</div>

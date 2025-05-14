@@ -44,7 +44,7 @@ namespace EMS.Infrastructure.Repositories
             return await query.SingleOrDefaultAsync(criteria);
         }
 
-        public IEnumerable<T> FindAll(Expression<Func<T, bool>> criteria, string[]? includes = null)
+        public List<T> FindAll(Expression<Func<T, bool>> criteria, string[]? includes = null)
         {
             IQueryable<T> query = _context.Set<T>();
 
@@ -82,7 +82,7 @@ namespace EMS.Infrastructure.Repositories
             return query.ToList();
         }
 
-        public async Task<IEnumerable<T>?> FindAllAsync(Expression<Func<T, bool>> criteria, string[]? includes = null)
+        public async Task<List<T>> FindAllAsync(Expression<Func<T, bool>> criteria, string[]? includes = null)
         {
             IQueryable<T> query = _context.Set<T>();
 

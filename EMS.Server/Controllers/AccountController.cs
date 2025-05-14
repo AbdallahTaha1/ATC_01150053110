@@ -1,10 +1,8 @@
 ﻿using EMS.Application.Features.Account.Commands;
 using EMS.Application.Features.Account.Commands.Authenticate;
-using EMS.Application.Features.Account.Commands.ChangePassword;
 using EMS.Application.Features.Account.Commands.RegisterUser;
-using EMS.Application.Features.Account.Commands.RequestJWTToken;
+using EMS.Application.Features.Account.Queries.GetAllUsers;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EMS.Server.Controllers
@@ -35,7 +33,13 @@ namespace EMS.Server.Controllers
         {
             return Ok(await _sender.Send(request));
         }
+        [HttpGet]
+        public async Task<IActionResult> GetAllUsersAsync()
+        {
+            return Ok(await _sender.Send(new GetAllUsersQuery()));
 
+        }
+        /*
         [HttpPost("requestJwt")]
         [ProducesResponseType(typeof(AuthResultDto), StatusCodes.Status200OK)]
         public async Task<IActionResult> RequestJWTAsync(RequestJWTTokenCommand request)
@@ -51,7 +55,7 @@ namespace EMS.Server.Controllers
             await _sender.Send(request);
             return NoContent();
         }
-
+        */
 
     }
 }

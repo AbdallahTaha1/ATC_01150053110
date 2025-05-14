@@ -21,7 +21,7 @@ namespace EMS.Application.Features.Events.Commands.CreateEvent
                 CategoryId = request.CategoryId,
                 Description = request.Description,
                 Venue = request.Venue,
-                Pirce = request.Pirce,
+                Price = request.Pirce,
                 ImageUrl = request.ImageUrl,
                 Date = request.Date,
                 NumberOfTickets = request.NumberOfTickets

@@ -17,9 +17,9 @@ namespace EMS.Server.Controllers
             _mediator = mediator;
         }
         [HttpGet]
-        public async Task<IActionResult> GetStudentList(GetEventsQuery request)
+        public async Task<IActionResult> GetEventsList()
         {
-            var response = await _mediator.Send(request);
+            var response = await _mediator.Send(new GetEventsQuery());
             return Ok(response);
         }
 

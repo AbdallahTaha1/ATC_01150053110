@@ -1,6 +1,6 @@
 ﻿namespace EMS.Domain.Entities
 {
-    public class UserBookedEvents
+    public class UserBookedEvent
     {
         public int Id { get; set; }
         public string ApplicationUserId { get; set; } = string.Empty;

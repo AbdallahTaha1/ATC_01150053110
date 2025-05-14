@@ -10,7 +10,8 @@ namespace EMS.Application
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
             services.AddTransient<IEventService, EventService>();
-
+            services.AddTransient<IBookingService, BookingService>();
+            services.AddTransient<IUserService, UserService>();
             //Configuration Of Mediator
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
 
