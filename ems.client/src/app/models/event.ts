@@ -8,7 +8,7 @@ export interface Event {
     name: string;
   };
   venue: string;
-  pirce: number;
+  price: number;
   imageUrl?: string;
   date: string;
   numberOfTickets: number;

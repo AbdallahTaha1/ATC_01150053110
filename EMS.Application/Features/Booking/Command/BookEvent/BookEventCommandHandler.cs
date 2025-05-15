@@ -14,7 +14,7 @@ namespace EMS.Application.Features.Booking.Command.BookEvent
 
         public async Task<Unit> Handle(BookEventCommand request, CancellationToken cancellationToken)
         {
-            await _bookService.BookEventAsync(request.Id);
+            await _bookService.BookEventAsync(request.Id, request.NumberOfTickets);
             return Unit.Value;
 
         }

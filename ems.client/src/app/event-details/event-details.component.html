@@ -1,1 +1,42 @@
-<p>event-details works!</p>
+<div class="container py-4" *ngIf="event">
+  <div class="row">
+    <div class="col-md-6">
+      <img
+        [src]="
+          event.imageUrl ||
+          'https://images.unsplash.com/photo-1746950862687-3017c5818710?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyfHx8ZW58MHx8fHx8'
+        "
+        alt="{{ event.name }}"
+        class="img-fluid rounded shadow-sm"
+      />
+    </div>
+
+    <div class="col-md-6">
+      <h2 class="fw-bold">{{ event.name }}</h2>
+      <span class="badge bg-info text-dark me-2">{{
+        "event.category.name"
+      }}</span>
+      <span class="badge bg-light text-secondary border">
+        {{ event.date | date : "fullDate" }}
+      </span>
+
+      <p class="mt-3 text-muted">{{ event.description }}</p>
+
+      <ul class="list-group list-group-flush my-3">
+        <li class="list-group-item">
+          <strong>📍 Venue:</strong> {{ event.venue }}
+        </li>
+        <li class="list-group-item">
+          <strong>💵 Price:</strong> ${{ event.price }}
+        </li>
+        <li class="list-group-item">
+          <strong>🎟️ Tickets Left:</strong> {{ event.numberOfTickets }}
+        </li>
+      </ul>
+
+      <button class="btn btn-primary btn-lg" (click)="bookEvent()">
+        Book Now
+      </button>
+    </div>
+  </div>
+</div>

@@ -11,7 +11,7 @@
 
   <div class="card-body position-relative">
     <div class="d-flex justify-content-between mb-2">
-      <span class="badge bg-info text-dark">{{ event.category.name }}</span>
+      <span class="badge bg-info text-dark">{{ "event.category.name" }}</span>
       <span class="badge bg-light text-secondary border">{{
         event.date | date : "mediumDate"
       }}</span>
@@ -25,7 +25,7 @@
     <div class="d-flex justify-content-between mt-3">
       <span class="text-muted small">
         📍 {{ event.venue }} <br />
-        💵 ${{ event.pirce }}
+        💵 ${{ event.price }}
       </span>
 
       <button class="btn btn-primary btn-sm" (click)="bookNow($event)">

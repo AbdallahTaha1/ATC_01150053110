@@ -9,4 +9,12 @@ import { AuthService } from '../services/auth.service';
 })
 export class HeaderComponent {
   constructor(public authService: AuthService) {}
+
+  get userName(): string | null {
+    return this.authService.getUserName();
+  }
+
+  logout() {
+    this.authService.logout();
+  }
 }

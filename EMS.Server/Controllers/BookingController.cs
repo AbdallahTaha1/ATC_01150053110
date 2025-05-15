@@ -17,8 +17,8 @@ namespace EMS.Server.Controllers
             _sender = sender;
         }
 
-        [HttpPost("{Id}")]
-        public async Task<IActionResult> BookAsync([FromRoute] BookEventCommand command)
+        [HttpPost]
+        public async Task<IActionResult> BookAsync(BookEventCommand command)
         {
             await _sender.Send(command);
             return Ok(new { message = "Event booked successfully." });

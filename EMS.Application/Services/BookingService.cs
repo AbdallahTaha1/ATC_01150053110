@@ -16,7 +16,7 @@ namespace EMS.Application.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task BookEventAsync(int eventId)
+        public async Task BookEventAsync(int eventId, int numberOfTickets)
         {
             var userId = _currentUserService.UserId;
             if (string.IsNullOrEmpty(userId))
@@ -26,20 +26,25 @@ namespace EMS.Application.Services
             if (evnt == null)
                 throw new KeyNotFoundException("Event not found");
 
-            var alreadyBooked = await _unitOfWork.UserEvents
-                .FindAllAsync(x => x.EventId == eventId && x.ApplicationUserId == userId);
-            if (alreadyBooked.Count != 0)
-                throw new InvalidOperationException("User already booked this event.");
+            if (numberOfTickets > evnt.NumberOfTickets)
+                throw new InvalidOperationException("No enough tickets");
 
             var booking = new UserBookedEvent
             {
                 EventId = eventId,
                 ApplicationUserId = userId,
+                NumberOfTickets = numberOfTickets
             };
 
 
             _unitOfWork.UserEvents.Add(booking);
-            await _unitOfWork.SaveChangesAsync();
+            var result = await _unitOfWork.SaveChangesAsync();
+
+            if (result > 0)
+            {
+                evnt.NumberOfTickets -= numberOfTickets;
+                await _unitOfWork.SaveChangesAsync();
+            }
         }
     }
 }

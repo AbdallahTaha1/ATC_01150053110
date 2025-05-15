@@ -1,0 +1,35 @@
+<div class="container my-5" *ngIf="event && !booked">
+  <h2>{{ event.name }}</h2>
+  <p>{{ event.description }}</p>
+  <p><strong>Venue:</strong> {{ event.venue }}</p>
+  <p><strong>Date:</strong> {{ event.date | date : "medium" }}</p>
+  <p><strong>Price per ticket:</strong> {{ event.price }} EGP</p>
+
+  <div class="form-group my-3">
+    <label for="tickets">Number of Tickets:</label>
+    <input
+      type="number"
+      id="tickets"
+      class="form-control"
+      [(ngModel)]="tickets"
+      name="tickets"
+      (ngModelChange)="updateTotalPrice()"
+      min="1"
+      [max]="event.numberOfTickets"
+    />
+  </div>
+
+  <p><strong>Total Price:</strong> {{ totalPrice }} EGP</p>
+
+  <button class="btn btn-success" (click)="bookNow()">Ckeck Out</button>
+
+  <div *ngIf="error" class="alert alert-danger mt-3">{{ error }}</div>
+</div>
+
+<div class="container text-center my-5" *ngIf="booked">
+  <h2>🎉 Congratulations!</h2>
+  <p>
+    Your booking for <strong>{{ event.name }}</strong> was successful!
+  </p>
+  <a routerLink="/" class="btn btn-primary mt-3">Back to Events</a>
+</div>

@@ -24,28 +24,17 @@
     </ul>
 
     <ul class="navbar-nav ms-auto">
-      <ng-container *ngIf="authService.isAuthenticated; else guestLinks">
-        <li class="nav-item">
-          <span class="nav-link">Welcome, {{ authService.currentUser }}</span>
-        </li>
-        <li class="nav-item">
-          <button
-            class="btn btn-outline-danger btn-sm"
-            (click)="authService.logout()"
-          >
-            Logout
-          </button>
-        </li>
-      </ng-container>
-
-      <ng-template #guestLinks>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/login">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/signup">Signup</a>
-        </li>
-      </ng-template>
+      <li class="nav-item" *ngIf="authService.isLoggedIn()">
+        <span class="nav-link">Welcome, {{ userName }}</span>
+      </li>
+      <li class="nav-item" *ngIf="authService.isLoggedIn()">
+        <button class="btn btn-outline-danger btn-sm" (click)="logout()">
+          Logout
+        </button>
+      </li>
+      <li class="nav-item" *ngIf="!authService.isLoggedIn()">
+        <a class="nav-link" routerLink="/login">Login</a>
+      </li>
     </ul>
   </div>
 </nav>
