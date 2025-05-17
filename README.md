@@ -98,17 +98,24 @@ Install dependencies:
 Run the frontend:
 
     ng serve
-🔐 Authentication
+## 🔐 Authentication
 JWT is used for securing API endpoints.
 
 Users are assigned either a User or Admin role.
 
 Database is seeded with default roles and an initial admin user during the first run.
 
-📸 Screenshots
-(Add screenshots of UI if available)
+## 📸 Screenshots
+![image](https://github.com/user-attachments/assets/8865808a-da1f-4d4e-82d2-3b79e0a89853)
+![image](https://github.com/user-attachments/assets/3f4e3c70-0e43-4d63-8487-9421a4a1b358)
+![image](https://github.com/user-attachments/assets/0e7a1a80-ba91-42b6-a219-6496e91db371)
+![image](https://github.com/user-attachments/assets/d5f055b0-0018-433f-803d-cc5d8f6356de)
+![image](https://github.com/user-attachments/assets/86655e57-e443-4679-a354-712c593dfc29)
+![image](https://github.com/user-attachments/assets/78718ee6-50d4-4500-9be2-dd06c1aa635a)
+![image](https://github.com/user-attachments/assets/8ebbff49-8f53-4dcb-9c59-3391a02d69c3)
 
-🧑‍💼 Author
+
+## 🧑‍💼 Author
 Abdallah Taha
 
 GitHub
