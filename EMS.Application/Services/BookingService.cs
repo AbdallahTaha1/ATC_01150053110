@@ -46,5 +46,16 @@ namespace EMS.Application.Services
                 await _unitOfWork.SaveChangesAsync();
             }
         }
+
+        public async Task<List<UserBookedEvent>> GetUserBookings()
+        {
+            var userId = _currentUserService.UserId;
+            if (string.IsNullOrEmpty(userId))
+                throw new UnauthorizedAccessException("User is not logged in.");
+
+            var userEvents = await _unitOfWork.UserEvents.FindAllAsync(b => b.ApplicationUserId == userId, ["Event"]);
+
+            return userEvents;
+        }
     }
 }

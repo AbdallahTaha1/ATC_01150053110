@@ -2,11 +2,7 @@ export interface Event {
   id: number;
   name: string;
   description: string;
-  categoryId: number;
-  category: {
-    id: number;
-    name: string;
-  };
+  categoryName: string;
   venue: string;
   price: number;
   imageUrl?: string;

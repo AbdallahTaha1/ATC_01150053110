@@ -1,0 +1,67 @@
+<div class="container mt-5">
+  <h2>{{ isEditMode ? "Edit Event" : "Create New Event" }}</h2>
+
+  <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label>Name</label>
+      <input formControlName="name" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+      <label>Description</label>
+      <textarea
+        formControlName="description"
+        rows="4"
+        class="form-control"
+      ></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label>Venue</label>
+      <input formControlName="venue" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+      <label>Date</label>
+      <input
+        type="datetime-local"
+        formControlName="date"
+        class="form-control"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label>Price</label>
+      <input type="number" formControlName="price" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+      <label>Number of Tickets</label>
+      <input
+        type="number"
+        formControlName="numberOfTickets"
+        class="form-control"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label>Category ID</label>
+      <input type="number" formControlName="categoryId" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+      <label>Image URL</label>
+      <input formControlName="imageUrl" class="form-control" />
+    </div>
+
+    <div
+      *ngIf="eventForm.invalid && (eventForm.touched || eventForm.dirty)"
+      class="text-danger"
+    >
+      Please fill all required fields correctly.
+    </div>
+    <button type="submit" class="btn btn-primary">
+      {{ isEditMode ? "Update Event" : "Create Event" }}
+    </button>
+  </form>
+</div>

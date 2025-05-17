@@ -16,7 +16,16 @@ namespace EMS.Infrastructure.Repositories
 
         public IEnumerable<T> GetAll() => _context.Set<T>().ToList();
 
-        public async Task<IEnumerable<T>?> GetAllAsync() => await _context.Set<T>().ToListAsync();
+        public async Task<IEnumerable<T>> GetAllAsync(string[]? includes = null)
+        {
+            IQueryable<T> query = _context.Set<T>();
+
+            if (includes != null)
+                foreach (var include in includes)
+                    query = query.Include(include);
+
+            return await query.ToListAsync();
+        }
 
         public T? GetById(int id) => _context.Set<T>().Find(id);
 
@@ -60,7 +69,7 @@ namespace EMS.Infrastructure.Repositories
             return _context.Set<T>().Where(criteria).Skip(skip).Take(take).ToList();
         }
 
-        public IEnumerable<T>? FindAll(Expression<Func<T, bool>> criteria, int? skip, int? take,
+        public IEnumerable<T> FindAll(Expression<Func<T, bool>> criteria, int? skip, int? take,
             Expression<Func<T, object>>? orderBy = null, string? orderByDirection = OrderBy.Ascending)
         {
             IQueryable<T> query = _context.Set<T>().Where(criteria);
@@ -93,7 +102,7 @@ namespace EMS.Infrastructure.Repositories
             return await query.Where(criteria).ToListAsync();
         }
 
-        public async Task<IEnumerable<T>?> FindAllAsync(Expression<Func<T, bool>> criteria, int take, int skip)
+        public async Task<IEnumerable<T>> FindAllAsync(Expression<Func<T, bool>> criteria, int take, int skip)
         {
             return await _context.Set<T>().Where(criteria).Skip(skip).Take(take).ToListAsync();
         }

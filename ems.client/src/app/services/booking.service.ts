@@ -16,8 +16,16 @@ export class BookingService {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });
-    console.log(data);
 
     return this.http.post(this.apiUrl, data, { headers });
+  }
+
+  getUserBookings(): Observable<any[]> {
+    const token = this.authService.getToken();
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+
+    return this.http.get<any[]>(`${this.apiUrl}`, { headers });
   }
 }

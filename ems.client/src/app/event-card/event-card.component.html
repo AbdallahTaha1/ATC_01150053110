@@ -1,34 +1,53 @@
 <div
-  class="card event-card h-100 shadow-sm border-0 rounded-4 overflow-hidden"
+  class="card event-card h-100 shadow border-0 rounded-4 overflow-hidden"
   (click)="goToDetails($event)"
+  style="
+    width: 100%;
+    min-height: 420px;
+    max-height: 420px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  "
+  onmouseover="this.style.transform='scale(1.02)'"
+  onmouseout="this.style.transform='scale(1)'"
 >
   <img
-    src="https://images.unsplash.com/photo-1746950862687-3017c5818710?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyfHx8ZW58MHx8fHx8"
+    [src]="event.imageUrl || defaultImage"
     class="card-img-top object-fit-cover"
     alt="{{ event.name }}"
-    style="height: 200px"
+    style="height: 200px; object-fit: cover"
   />
 
-  <div class="card-body position-relative">
-    <div class="d-flex justify-content-between mb-2">
-      <span class="badge bg-info text-dark">{{ "event.category.name" }}</span>
-      <span class="badge bg-light text-secondary border">{{
-        event.date | date : "mediumDate"
-      }}</span>
+  <div class="card-body d-flex flex-column justify-content-between">
+    <div>
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <span class="badge bg-gradient text-dark">{{
+          event.categoryName
+        }}</span>
+        <span class="badge bg-light text-secondary border small">{{
+          event.date | date : "mediumDate"
+        }}</span>
+      </div>
+
+      <h5 class="card-title fw-semibold text-truncate" title="{{ event.name }}">
+        {{ event.name }}
+      </h5>
+      <p class="card-text text-muted small">
+        {{ event.description | slice : 0 : 90 }}...
+      </p>
     </div>
 
-    <h5 class="card-title fw-semibold">{{ event.name }}</h5>
-    <p class="card-text text-muted small">
-      {{ event.description | slice : 0 : 100 }}...
-    </p>
+    <div class="d-flex justify-content-between align-items-end mt-3">
+      <div class="text-muted small">
+        📍 {{ event.venue }}<br />
+        💵 ${{ event.price }}<br />
+        🎟️ Tickets Left: <strong>{{ event.numberOfTickets }}</strong>
+      </div>
 
-    <div class="d-flex justify-content-between mt-3">
-      <span class="text-muted small">
-        📍 {{ event.venue }} <br />
-        💵 ${{ event.price }}
-      </span>
-
-      <button class="btn btn-primary btn-sm" (click)="bookNow($event)">
+      <button
+        class="btn btn-primary btn-sm px-3 py-1"
+        (click)="bookNow($event)"
+      >
         Book Now
       </button>
     </div>

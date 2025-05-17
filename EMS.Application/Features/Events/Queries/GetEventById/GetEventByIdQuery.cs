@@ -1,9 +1,8 @@
-﻿using EMS.Domain.Entities;
-using MediatR;
+﻿using MediatR;
 
 namespace EMS.Application.Features.Events.Queries.GetEventById
 {
-    public class GetEventByIdQuery : IRequest<Event?>
+    public class GetEventByIdQuery : IRequest<EventDto?>
     {
         public int Id { get; set; }
 

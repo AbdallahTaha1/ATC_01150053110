@@ -1,10 +1,9 @@
 ﻿using EMS.Domain.Abstractions.IServices;
-using EMS.Domain.Entities;
 using MediatR;
 
 namespace EMS.Application.Features.Events.Queries.GetEventById
 {
-    public class GetEventByIdQueryHandler : IRequestHandler<GetEventByIdQuery, Event?>
+    public class GetEventByIdQueryHandler : IRequestHandler<GetEventByIdQuery, EventDto?>
     {
         private readonly IEventService _eventService;
 
@@ -13,10 +12,25 @@ namespace EMS.Application.Features.Events.Queries.GetEventById
             _eventService = eventService;
         }
 
-        public async Task<Event?> Handle(GetEventByIdQuery request, CancellationToken cancellationToken)
+        public async Task<EventDto?> Handle(GetEventByIdQuery request, CancellationToken cancellationToken)
         {
             var result = await _eventService.GetEventByIdAsync(request.Id);
-            return result;
+
+            if (result == null) return null;
+
+            var eventDto = new EventDto()
+            {
+                Id = result.Id,
+                Name = result.Name,
+                Date = result.Date,
+                Description = result.Description,
+                Venue = result.Venue,
+                CategoryName = result.Category.Name,
+                NumberOfTickets = result.NumberOfTickets,
+                Price = result.Price,
+                ImageUrl = result.ImageUrl
+            };
+            return eventDto;
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using EMS.Application.Features.Events.Commands.CreateEvent;
+using EMS.Application.Features.Events.Commands.DeleteEvent;
+using EMS.Application.Features.Events.Commands.EditEvent;
 using EMS.Application.Features.Events.Queries.GetEventById;
 using EMS.Application.Features.Events.Queries.GetEvents;
 using MediatR;
@@ -27,6 +29,9 @@ namespace EMS.Server.Controllers
         public async Task<IActionResult> GetStudentById([FromRoute] GetEventByIdQuery request)
         {
             var response = await _mediator.Send(request);
+
+            if (response == null) return NotFound();
+
             return Ok(response);
         }
 
@@ -34,6 +39,25 @@ namespace EMS.Server.Controllers
         public async Task<int> AddEventAsync(CreateEventCommmand command)
         {
             return await _mediator.Send(command);
+        }
+        [HttpPut]
+        public async Task<IActionResult> EditEventAsync([FromBody] EditEventCommmand command)
+        {
+            var result = await _mediator.Send(command);
+
+            if (result == null) return NotFound();
+
+            return Ok(result);
+
+        }
+        [HttpDelete("{Id}")]
+        public async Task<IActionResult> RemoveAsync([FromRoute] DeleteEventCommand command)
+        {
+            var result = await _mediator.Send(command);
+
+            if (!result) return NotFound();
+
+            return NoContent();
         }
     }
 }

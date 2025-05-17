@@ -1,10 +1,12 @@
-﻿using MediatR;
+﻿using EMS.Domain.Entities;
+using MediatR;
 using System.ComponentModel.DataAnnotations;
 
-namespace EMS.Application.Features.Events.Commands.CreateEvent
+namespace EMS.Application.Features.Events.Commands.EditEvent
 {
-    public class CreateEventCommmand : IRequest<int>
+    public class EditEventCommmand : IRequest<Event?>
     {
+        public int Id { get; set; }
         [Required, MaxLength(120)]
         public string Name { get; set; } = string.Empty;
         [Required, MaxLength(1500)]
@@ -17,6 +19,5 @@ namespace EMS.Application.Features.Events.Commands.CreateEvent
         public string? ImageUrl { get; set; } = string.Empty;
         public DateTime Date { get; set; }
         public int NumberOfTickets { get; set; }
-
     }
 }

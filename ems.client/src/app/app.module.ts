@@ -12,7 +12,12 @@ import { EventDetailsComponent } from './event-details/event-details.component';
 import { EventListComponent } from './event-list/event-list.component';
 import { LoginComponent } from './login/login.component';
 import { BookingComponent } from './booking/booking.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RegisterComponent } from './register/register.component';
+import { BookingHistoryComponent } from './booking-history/booking-history.component';
+import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
+import { AdminEventListComponent } from './admin/admin-event-list/admin-event-list.component';
+import { CreateEditEventComponent } from './admin/create-edit-event/create-edit-event.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +29,11 @@ import { FormsModule } from '@angular/forms';
     EventListComponent,
     LoginComponent,
     BookingComponent,
+    RegisterComponent,
+    BookingHistoryComponent,
+    AdminDashboardComponent,
+    AdminEventListComponent,
+    CreateEditEventComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +41,7 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     MatSlideToggleModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

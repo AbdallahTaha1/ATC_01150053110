@@ -7,17 +7,17 @@ namespace EMS.Domain.Abstractions.IRepositories
     {
         T? GetById(int id);
         Task<T?> GetByIdAsync(int id);
-        IEnumerable<T>? GetAll();
-        Task<IEnumerable<T>?> GetAllAsync();
+        IEnumerable<T> GetAll();
+        Task<IEnumerable<T>> GetAllAsync(string[]? includes = null);
         T? Find(Expression<Func<T, bool>> criteria, string[]? includes = null);
         Task<T?> FindAsync(Expression<Func<T, bool>> criteria, string[]? includes = null);
         List<T> FindAll(Expression<Func<T, bool>> criteria, string[]? includes = null);
-        IEnumerable<T>? FindAll(Expression<Func<T, bool>> criteria, int take, int skip);
-        IEnumerable<T>? FindAll(Expression<Func<T, bool>> criteria, int? take, int? skip,
+        IEnumerable<T> FindAll(Expression<Func<T, bool>> criteria, int take, int skip);
+        IEnumerable<T> FindAll(Expression<Func<T, bool>> criteria, int? take, int? skip,
             Expression<Func<T, object>>? orderBy = null, string? orderByDirection = OrderBy.Ascending);
 
         Task<List<T>> FindAllAsync(Expression<Func<T, bool>> criteria, string[]? includes = null);
-        Task<IEnumerable<T>?> FindAllAsync(Expression<Func<T, bool>> criteria, int skip, int take);
+        Task<IEnumerable<T>> FindAllAsync(Expression<Func<T, bool>> criteria, int skip, int take);
         Task<IEnumerable<T>> FindAllAsync(Expression<Func<T, bool>> criteria, int? skip, int? take,
             Expression<Func<T, object>>? orderBy = null, string orderByDirection = OrderBy.Ascending);
         T Add(T entity);

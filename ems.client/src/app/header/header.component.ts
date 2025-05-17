@@ -10,6 +10,11 @@ import { AuthService } from '../services/auth.service';
 export class HeaderComponent {
   constructor(public authService: AuthService) {}
 
+  get isAdmin(): boolean {
+    const role = this.authService.getUserRole();
+    return role === 'Admin';
+  }
+
   get userName(): string | null {
     return this.authService.getUserName();
   }

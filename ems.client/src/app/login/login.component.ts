@@ -18,7 +18,7 @@ export class LoginComponent {
     this.authService.login(this.credentials).subscribe({
       next: (res) => {
         if (res.isAuthenticated) {
-          this.authService.saveAuthData(res.jwtToken, res.name);
+          this.authService.saveAuthData(res.jwtToken, res.name, res.roles[0]);
           this.router.navigate(['/']);
         } else {
           this.error = res.message || 'Login failed.';

@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:5095/api/Account'; // Update to your login endpoint
+  private apiUrl = 'http://localhost:5095/api/Account';
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -22,9 +22,27 @@ export class AuthService {
     }>(`${this.apiUrl}/authenticate`, credentials);
   }
 
-  saveAuthData(token: string, userName: string) {
+  register(user: {
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+  }) {
+    return this.http.post<{
+      name: string;
+      email: string;
+      roles: string[];
+      jwtToken: string;
+      jwtTokenExpiresOn: string;
+      message: string;
+      isAuthenticated: boolean;
+    }>(`${this.apiUrl}/registerUser`, user);
+  }
+
+  saveAuthData(token: string, userName: string, role: string) {
     localStorage.setItem('auth_token', token);
     localStorage.setItem('user_name', userName);
+    localStorage.setItem('userRole', role);
   }
 
   getToken(): string | null {
@@ -35,6 +53,10 @@ export class AuthService {
     return localStorage.getItem('user_name');
   }
 
+  getUserRole(): string | null {
+    return localStorage.getItem('userRole');
+  }
+
   isLoggedIn(): boolean {
     return !!this.getToken();
   }
@@ -42,6 +64,7 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem('auth_token');
     localStorage.removeItem('user_name');
+    localStorage.removeItem('userRole');
     this.router.navigate(['/']);
   }
 }

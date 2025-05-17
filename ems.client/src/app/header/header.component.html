@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light px-3 shadow-sm">
-  <a class="navbar-brand fw-bold" routerLink="/">🎫 MyEvents</a>
+  <a class="navbar-brand fw-bold" routerLink="/">🎫 Evento</a>
 
   <button
     class="navbar-toggler"
@@ -15,12 +15,10 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/">Home</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/events">Events</a>
+      <li class="nav-item" *ngIf="authService.isLoggedIn()">
+        <a class="nav-link" routerLink="/my-bookings">My Bookings</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/booking">My Bookings</a>
-      </li>
+      <li *ngIf="isAdmin"><a class="nav-link" routerLink="/admin">Admin</a></li>
     </ul>
 
     <ul class="navbar-nav ms-auto">
@@ -32,8 +30,9 @@
           Logout
         </button>
       </li>
-      <li class="nav-item" *ngIf="!authService.isLoggedIn()">
-        <a class="nav-link" routerLink="/login">Login</a>
+      <li class="nav-item d-flex" *ngIf="!authService.isLoggedIn()">
+        <a class="nav-link me-2" routerLink="/login">Login</a>
+        <a class="nav-link" routerLink="/register">Register</a>
       </li>
     </ul>
   </div>
